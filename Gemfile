@@ -69,3 +69,7 @@ gem "hotwire_combobox", "~> 0.3.2"
 gem "view_component", "~> 3.21"
 
 gem "paper_trail", "~> 16.0"
+
+gem "ransack", "~> 4.3"
+
+gem "pagy", "~> 9.3"

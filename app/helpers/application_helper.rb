@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   def bs_alert(message, type = 'success')
     if message.present?
