@@ -24,6 +24,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= navigation_bar(
+      [ 
+        { name: 'Home', path: root_path, class: controller_name.eql?('home') ? 'active' : '' },
+      # { name: 'Projects', path: '#', class: controller_name.eql?('projects') ? 'active' : '' }, 
+      ])
+    %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
