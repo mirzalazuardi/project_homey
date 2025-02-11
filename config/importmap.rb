@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js", preload: true
 pin "bootstrap", to: "bootstrap.min.js"
 pin "@josefarias/hotwire_combobox", to: "@josefarias--hotwire_combobox.js" # @0.3.2
+pin "@stimulus-components/rails-nested-form", to: "@stimulus-components--rails-nested-form.js" # @5.0.0
