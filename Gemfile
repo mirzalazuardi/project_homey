@@ -58,3 +58,6 @@ group :development do
   gem "web-console"
 end
 
+
+gem "pry-remote", "~> 0.1.8", :groups => [:development, :test]
+gem "rails-pry", "~> 0.0.1", :groups => [:development, :test]
