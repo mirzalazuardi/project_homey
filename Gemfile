@@ -65,3 +65,5 @@ gem "rails-pry", "~> 0.0.1", :groups => [:development, :test]
 gem "authentication-zero", "~> 4.0"
 
 gem "hotwire_combobox", "~> 0.3.2"
+
+gem "view_component", "~> 3.21"

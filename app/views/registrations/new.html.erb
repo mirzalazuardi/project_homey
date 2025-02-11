@@ -13,23 +13,11 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.email_field :email, value: @user.email, required: true, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
+  <%= render InputComponent.new(name: 'email', form: form, type: :email, opts: {required: true, autofocus: true, autocomplete: "email"}) %>
+  <%= render InputComponent.new(name: 'password', form: form, type: :password, opts: {required: true, autocomplete: "new-password"}) %>
     <div>12 characters minimum.</div>
-  </div>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
-  </div>
+  <%= render InputComponent.new(name: 'password_confirmation', form: form, type: :password, opts: {required: true, autocomplete: "new-password"}) %>
 
-  <div>
-    <%= form.submit "Sign up" %>
-  </div>
+  <%= render InputComponent.new(name: 'Sign up', form: form, type: :submit) %>
 <% end %>

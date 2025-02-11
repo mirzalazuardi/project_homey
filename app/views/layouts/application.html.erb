@@ -32,6 +32,9 @@
     %>
 
     <div class="container">
+      <%= bs_alert(notice) %>
+      <%= bs_alert(alert, 'danger') %>
+
       <%= yield %>
     </div>
   </body>
