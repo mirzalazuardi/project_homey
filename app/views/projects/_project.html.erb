@@ -1,0 +1,14 @@
+<li id="<%= dom_id resource %>">
+  <p>
+    <strong>Name:</strong>
+    <%= resource.name %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= resource.status %>
+  </p>
+
+  <%= link_to "Edit", edit_project_path(resource), data: {turbo: false} %>
+
+</li>

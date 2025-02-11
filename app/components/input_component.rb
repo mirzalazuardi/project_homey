@@ -8,7 +8,7 @@ class InputComponent < ViewComponent::Base
     @name = name
     @id = id || name.to_s
     @label = opts.delete(:label) || name.to_s.humanize
-    @value = value || form&.object&.send(name)
+    @value = value || form&.object&.send(name) rescue nil
     @lb_opts = opts.delete(:lb_opts) || {}
     @wr_opts = opts.delete(:wr_opts)
     @opts = opts
@@ -16,7 +16,7 @@ class InputComponent < ViewComponent::Base
 
   def call
     render_wrapper do
-      concat(render_label) if %w(email number text text_area password).include?(type)
+      concat(render_label) if %w(combobox email number text text_area password).include?(type)
       concat(render_input)
     end
   end
@@ -48,7 +48,8 @@ class InputComponent < ViewComponent::Base
     end
 
     def combobox
-      form.combobox(name, value, **opts)
+      collection = opts.delete(:collection)
+      form.combobox(name, collection, **opts.merge(class: "form-control"))
     end
 
     def password

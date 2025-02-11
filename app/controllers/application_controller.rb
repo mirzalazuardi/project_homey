@@ -7,6 +7,28 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
   before_action :set_paper_trail_whodunnit
 
+  def pluralized_resource
+    underscored_resource.pluralize
+  end
+  helper_method :pluralized_resource
+
+  def underscored_resource
+    resource_class.to_s.underscore
+  end
+  helper_method :underscored_resource
+
+  def resource_class
+    controller_name.classify.constantize
+  end
+
+  def resource_params
+    params.require(controller_name.singularize.to_sym).permit!
+  end
+
+  def resources_url
+    url_for(controller: controller_name, action: :index)
+  end
+
   private
     def authenticate
       if session_record = Session.find_by_id(cookies.signed[:session_token])

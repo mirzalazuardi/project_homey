@@ -1,0 +1,19 @@
+<%= form_with(model: @resource) do |form| %>
+  <% if @resource.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this project from being saved:</h-@resource>
+
+      <ul>
+        <% @resource.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render InputComponent.new(name: 'name', form: form, type: :text) %>
+  <%= render InputComponent.new(name: 'status', form: form, type: :combobox,
+                                opts: {collection: Project::STATUSES}) %>
+
+  <%= render InputComponent.new(name: 'Save', form: form, type: :submit) %>
+<% end %>

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_11_175917) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_11_182207) do
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.string "status", default: "To Do"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_agent"

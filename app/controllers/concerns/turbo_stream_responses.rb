@@ -4,42 +4,38 @@ module TurboStreamResponses
 
   protected
 
-  def default_create_success_turbo_streams(notification: false)
+  def default_create_success_turbo_streams
     result = [
       turbo_stream.prepend(pluralized_resource, partial: "#{pluralized_resource}/#{underscored_resource}", locals: { resource: @resource }),
     ]
-    result << turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { message: "#{resource_class.name} was successfully created." }) if notification
     result
   end
 
-  def default_create_failure_turbo_streams(notification: false)
+  def default_create_failure_turbo_streams
     result = [
       turbo_stream.replace(dom_id(@resource, :error_create), partial: "shared/error_crud", locals: { resource: @resource }),
     ]
     result
   end
 
-  def default_update_success_turbo_streams(notification: false)
+  def default_update_success_turbo_streams
     result = [
-      turbo_stream.replace(@resource, partial: "#{pluralized_resource}/#{underscored_resource}", locals: { resource: @resource }),
+      turbo_stream.replace(dom_id(@resource), partial: "#{pluralized_resource}/#{underscored_resource}", locals: { resource: @resource }),
     ]
-    result << turbo_stream.append('notifications', partial: 'shared/notification', locals: { message: "#{resource_class.name} was successfully updated." }) if notification
     result
   end
 
-  def default_update_failure_turbo_streams(notification: false)
+  def default_update_failure_turbo_streams
     result = [
       turbo_stream.replace(dom_id(@resource, :error_update), partial: "shared/error_crud", locals: { resource: @resource }),
     ]
-    result << turbo_stream.append('notifications', partial: 'shared/notification', locals: { message: 'Failed to update resource' }) if notification
     result
   end
 
-  def default_destroy_turbo_streams(notification: false)
+  def default_destroy_turbo_streams
     result = [
       turbo_stream.remove(@resource),
     ]
-    result << turbo_stream.append('notifications', partial: 'shared/notification', locals: { message: "#{resource_class.name} was successfully destroyed." }) if notification
     result
   end
 
