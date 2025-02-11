@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_request_details
   before_action :authenticate
+  before_action :set_paper_trail_whodunnit
 
   private
     def authenticate
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
     def set_current_request_details
       Current.user_agent = request.user_agent
       Current.ip_address = request.ip
+    end
+
+    def user_for_paper_trail
+      Current.user.email || "Guest"
     end
 end
