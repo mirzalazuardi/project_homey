@@ -63,3 +63,5 @@ gem "pry-remote", "~> 0.1.8", :groups => [:development, :test]
 gem "rails-pry", "~> 0.0.1", :groups => [:development, :test]
 
 gem "authentication-zero", "~> 4.0"
+
+gem "hotwire_combobox", "~> 0.3.2"

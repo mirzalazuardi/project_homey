@@ -108,6 +108,10 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hotwire_combobox (0.3.2)
+      rails (>= 7.0.7.2)
+      stimulus-rails (>= 1.2)
+      turbo-rails (>= 1.2)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.1.0)
@@ -363,6 +367,7 @@ DEPENDENCIES
   brakeman
   cssbundling-rails
   debug
+  hotwire_combobox (~> 0.3.2)
   importmap-rails
   jbuilder
   kamal
