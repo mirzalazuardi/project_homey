@@ -1,4 +1,4 @@
-<%= form_with(model: @resource) do |form| %>
+<%= form_with(model: @resource, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
   <% if @resource.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this project from being saved:</h-@resource>
@@ -15,6 +15,24 @@
   <%= render InputComponent.new(name: 'status', form: form, type: :combobox,
                                 opts: {collection: Project::STATUSES}) %>
 
-  <%= render InputComponent.new(name: 'Save', form: form, type: :submit) %>
-  <%#= render InputComponent.new(name: 'Save', form: form, type: :submit, opts: {data: {turbo: !action_name.eql?('edit')}}) %>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :comments, Comment.new, child_index: 'NEW_RECORD' do |comment_fields| %>
+      <%= render "comment_form", f: comment_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :comments do |comment_fields| %>
+    <%= render "comment_form", f: comment_fields %>
+  <% end %>
+
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button type="button" class="btn btn-primary mt-2" data-action="nested-form#add">
+    <i class="bi bi-plus-circle"></i>
+  </button>
+
+  <div class="mt-2">
+    <%= render InputComponent.new(name: 'Save', form: form, type: :submit) %>
+  </div>
 <% end %>
