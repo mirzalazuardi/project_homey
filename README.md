@@ -1,24 +1,38 @@
-# README
+# Setup rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## migrate
+```bash
+rails db:create db:migrate db:seed
+```
 
-Things you may want to cover:
+## run
+```bash
+bin/dev
+```
 
-* Ruby version
+## documetation
 
-* System dependencies
+This project using rails 8, with turbo and hotwire.
 
-* Configuration
+Features:
 
-* Database creation
+- [x] User can sign up
+- [x] User can sign in
+- [x] User can sign out
+- [x] User can create a new project
+- [x] User can list all projects
+- [x] User can comment on a project
+- [x] User can list all comments on a project
+- [x] User can delete a project
+- [x] User can edit a project
+- [x] User can show version of the project
+- [x] User can list all versions of the project
+- [x] User can list all comments on a version
+- [x] User can show a version of the comment
 
-* Database initialization
+## dummy user credential
 
-* How to run the test suite
+go to [this](http://localhost:3000/sign_in)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- email: user1@mail.com
+- password: password123!
