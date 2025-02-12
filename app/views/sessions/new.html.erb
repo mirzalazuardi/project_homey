@@ -1,0 +1,12 @@
+<h1>Sign in</h1>
+
+<%= form_with(url: sign_in_path) do |form| %>
+  <%= render InputComponent.new(name: 'email', form: form, type: :email) %>
+  <%= render InputComponent.new(name: 'password', form: form, type: :password) %>
+  <%= render InputComponent.new(name: 'Sign in', form: form, type: :submit) %>
+<% end %>
+
+<div>
+  <%= bs_link_to "Sign up", sign_up_path %> |
+  <%= bs_link_to "Forgot your password?", new_identity_password_reset_path %>
+</div>

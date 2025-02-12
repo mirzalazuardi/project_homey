@@ -1,0 +1,8 @@
+<% content_for :title, "New project" %>
+
+<h1>New project</h1>
+
+<%= turbo_frame_tag "create_project" do %>
+  <%= render "form", project: @project %>
+  <%= link_to "Back to projects", projects_path %>
+<% end %>

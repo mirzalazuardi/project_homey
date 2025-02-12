@@ -1,0 +1,23 @@
+<h1>Sign up</h1>
+
+<%= form_with(url: sign_up_path) do |form| %>
+  <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render InputComponent.new(name: 'email', form: form, type: :email, opts: {required: true, autofocus: true, autocomplete: "email"}) %>
+  <%= render InputComponent.new(name: 'password', form: form, type: :password, opts: {required: true, autocomplete: "new-password"}) %>
+    <div>12 characters minimum.</div>
+
+  <%= render InputComponent.new(name: 'password_confirmation', form: form, type: :password, opts: {required: true, autocomplete: "new-password"}) %>
+
+  <%= render InputComponent.new(name: 'Sign up', form: form, type: :submit) %>
+<% end %>

@@ -1,0 +1,39 @@
+<% data = binding.local_variable_defined?(:resource) ? binding.local_variable_get(:resource) : @resource %>
+<%= turbo_frame_tag dom_id(data) do %>
+  <li id="<%= dom_id(data) %>">
+    <p>
+      <strong>Name:</strong>
+      <%= data.name %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= data.status %>
+    </p>
+
+    <div>
+      <strong>Comments(<%= data.comments.size %>):</strong>
+      <ul>
+        <% data.comments.each do |comment| %>
+          <li>
+            <%= comment.text %>
+            <%= link_to versions_path(item_type: :comments, item_id: comment.id), data: { turbo: false }  do %>
+              <i class="bi bi-clock-history"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <%= link_to edit_project_path(data), class: "btn btn-primary" do %>
+      <i class="bi bi-pencil"></i> Edit
+    <% end %>
+    <%= link_to versions_path(item_type: :projects, item_id: data.id), data: { turbo: false }, class: "btn btn-secondary" do %>
+      <i class="bi bi-clock-history"></i> History
+    <% end %>
+    <%= link_to project_path(data), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?" }, class: "btn btn-danger" do %>
+      <i class="bi bi-trash"></i> Delete
+    <% end %>
+
+  </li>
+<% end %>

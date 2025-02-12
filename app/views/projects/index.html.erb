@@ -1,0 +1,23 @@
+<h1>Projects</h1>
+
+<%= turbo_frame_tag "create_project" do %>
+  <%= link_to new_project_path, class: "btn btn-primary" do %>
+    <i class="bi bi-plus-circle"></i> Add
+  <% end %>
+<% end %>
+
+<%#= turbo_frame_tag "search_page" do %>
+  <%#= link_to search_pages_path do %>
+    <!--<i class="bi bi-search"></i> Search-->
+  <%# end %>
+<%#end %>
+
+<ul class="list-group list-group-striped mt-3">
+  <%= turbo_frame_tag "projects" do %>
+    <% @resources.each do |project| %>
+        <%= render project, resource: project %>
+    <% end %>
+  <% end %>
+</ul>
+<%#== pagy_bootstrap_nav(@pagy) %>
+
