@@ -28,7 +28,7 @@
     <%= navigation_bar(
       [ 
         { name: 'Home', path: root_path, class: controller_name.eql?('home') ? 'active' : '' },
-      # { name: 'Projects', path: '#', class: controller_name.eql?('projects') ? 'active' : '' }, 
+        { name: 'Projects', path: projects_path, class: controller_name.eql?('projects') ? 'active' : '' }, 
       ])
     %>
 
