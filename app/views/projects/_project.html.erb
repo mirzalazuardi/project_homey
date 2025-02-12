@@ -17,7 +17,9 @@
         <% data.comments.each do |comment| %>
           <li>
             <%= comment.text %>
-            <%= link_to "History", versions_path(item_type: :comments, item_id: comment.id), data: {turbo: false} %>
+            <%= link_to versions_path(item_type: :comments, item_id: comment.id), data: { turbo: false }  do %>
+              <i class="bi bi-clock-history"></i>
+            <% end %>
           </li>
         <% end %>
       </ul>
