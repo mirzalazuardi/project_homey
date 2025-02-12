@@ -1,0 +1,24 @@
+<div class="mb-2">
+  <strong>action:</strong> <%= version.event %><br>
+</div>
+<div class="mb-2">
+  <strong>changed by:</strong> <%= version.whodunnit || "unknown" %><br>
+</div>
+<div class="mb-2">
+  <strong>timestamp:</strong> <%= version.created_at.strftime("%y-%m-%d %h:%m") %><br>
+</div>
+<div class="mb-2">
+  <strong>object:</strong> 
+  <div class="container">
+    <div class="row">
+      <% version.item.class.readable_object(version).each do |key, value| %>
+        <div class="col-md-6">
+          <strong><%= key.to_s.humanize %>:</strong> <%= value %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= bs_link_to "view detail", version_detail_path(id: version.id) if action_name.eql? 'index' %>
+<%= bs_link_to "back", :back if action_name.eql? 'show' %>
+<%= bs_link_to "view #{version.item.class.to_s.humanize.downcase}", public_send("#{version.item.class.to_s.parameterize}_path", id: version.item.class.readable_object(version)[:id]) if version.object.present? %>

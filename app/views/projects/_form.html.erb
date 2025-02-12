@@ -16,4 +16,5 @@
                                 opts: {collection: Project::STATUSES}) %>
 
   <%= render InputComponent.new(name: 'Save', form: form, type: :submit) %>
+  <%#= render InputComponent.new(name: 'Save', form: form, type: :submit, opts: {data: {turbo: !action_name.eql?('edit')}}) %>
 <% end %>

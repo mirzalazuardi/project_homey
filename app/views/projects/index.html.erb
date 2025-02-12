@@ -1,7 +1,7 @@
 <h1>Projects</h1>
 
 <%= turbo_frame_tag "create_project" do %>
-  <%= link_to new_project_path do %>
+  <%= link_to new_project_path, class: "btn btn-primary" do %>
     <i class="bi bi-plus-circle"></i> Add
   <% end %>
 <% end %>
@@ -15,7 +15,7 @@
 <ul class="list-group list-group-striped mt-3">
   <%= turbo_frame_tag "projects" do %>
     <% @resources.each do |project| %>
-      <%= render project, resource: project %>
+        <%= render project, resource: project %>
     <% end %>
   <% end %>
 </ul>

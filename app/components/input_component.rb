@@ -49,7 +49,8 @@ class InputComponent < ViewComponent::Base
 
     def combobox
       collection = opts.delete(:collection)
-      form.combobox(name, collection, **opts.merge(class: "form-control"))
+      tag.br +
+      form.combobox(name, collection, **opts)
     end
 
     def password

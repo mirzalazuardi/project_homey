@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  scope '/versions' do
+    get '/:id', to: 'versions#show', as: :version_detail, constraints: { id: /\d+/ }
+    get '/:item_type', to: 'versions#index', as: :versions
+  end
   resources :projects
   get  "sign_in", to: "sessions#new"
   post "sign_in", to: "sessions#create"

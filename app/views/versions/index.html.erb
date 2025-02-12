@@ -1,0 +1,9 @@
+<h1>Version History for <%= @item_class.to_s %><%= "##{params[:item_id]}" if params[:item_id] %></h1>
+
+<ul class="list-group">
+  <% @versions.each do |version| %>
+    <li class="list-group-item">
+      <%= render "#{version.item.class.to_s.parameterize}", version: version %>
+    </li>
+  <% end %>
+</ul>

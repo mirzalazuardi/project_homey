@@ -2,7 +2,7 @@
 
 <h1>Editing project</h1>
 
-<%= turbo_frame_tag dom_id(@resource, :update) do %>
+<%= turbo_frame_tag dom_id(@resource) do %>
   <%= render partial: "form", locals: {resource: @resource} %>
-  <%= link_to "Back to projects", projects_path, data: {turbo: false} %>
+  <%= link_to "Back to projects", projects_path %>
 <% end %>
