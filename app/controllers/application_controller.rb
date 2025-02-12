@@ -44,6 +44,6 @@ class ApplicationController < ActionController::Base
     end
 
     def user_for_paper_trail
-      Current.user.email || "Guest"
+      Current.user&.email || "Guest"
     end
 end
